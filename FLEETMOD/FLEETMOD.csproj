@@ -38,9 +38,13 @@
     <Reference Include="ACTk.Runtime" />
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Steam\steamapps\common\PULSARLostColony\PULSAR_LostColony_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>Lib\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass" />
+    <Reference Include="AstarPathfindingProject, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\AstarPathfindingProject.dll</HintPath>
+    </Reference>
     <Reference Include="Photon3Unity3D" />
     <Reference Include="PLInputBase, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -91,6 +95,7 @@
     <Compile Include="GetNumEnemiesLeft.cs" />
     <Compile Include="GetShipUIElementForShip.cs" />
     <Compile Include="GetTextOfCaptainOrderID.cs" />
+    <Compile Include="HighRollersOnLiarsDiceGameWin.cs" />
     <Compile Include="Interface\Dialogs\FleetManager.cs" />
     <Compile Include="Internal_AttemptBlindJump.cs" />
     <Compile Include="JumpBtnClick.cs" />
@@ -123,6 +128,7 @@
     <Compile Include="ShouldShowClassSelectionScreen.cs" />
     <Compile Include="TakeDamage.cs" />
     <Compile Include="TeamMessage.cs" />
+    <Compile Include="TeleportToClass.cs" />
     <Compile Include="Update.cs" />
     <Compile Include="UpdateAllRightShips.cs" />
     <Compile Include="UpdateButtons.cs" />
@@ -143,9 +149,9 @@
     <Content Include="Lib\ACTk.Runtime.dll" />
     <Content Include="Lib\Assembly-CSharp-firstpass.dll" />
     <Content Include="Lib\Assembly-CSharp.dll" />
+    <Content Include="Lib\AstarPathfindingProject.dll" />
     <Content Include="Lib\Photon3Unity3D.dll" />
     <Content Include="Lib\PLInputBase.dll" />
-    <Content Include="Lib\PulsarPluginLoader.dll" />
     <Content Include="Lib\UnityEngine.CoreModule.dll" />
     <Content Include="Lib\UnityEngine.dll" />
     <Content Include="Lib\UnityEngine.IMGUIModule.dll" />
