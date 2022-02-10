@@ -12,10 +12,10 @@ namespace FLEETMOD
 		public static void Postfix(PLServer __instance)
 		{
             if (MyVariables.isrunningmod)
-			{
+			{ 
 				if (__instance != null && __instance.GameHasStarted && PLNetworkManager.Instance.LocalPlayer != null && PLNetworkManager.Instance.LocalPlayer.GetHasStarted() && PLEncounterManager.Instance.PlayerShip != null)
 				{
-                    PulsarModLoader.ModMessage.SendRPC("Dragon+Mest.Fleetmod", "FLEETMOD.HostUpdateVariables", PhotonTargets.MasterClient, new object[] { });
+					PulsarModLoader.ModMessage.SendRPC("Dragon+Mest.Fleetmod", "FLEETMOD.HostUpdateVariables", PhotonTargets.MasterClient, new object[] { });
 					PLEncounterManager.Instance.PlayerShip.TagID = -23;
 					PLInGameUI.Instance.CurrentOrdersLabel.enabled = true;
 					PLInGameUI.Instance.CurrentOrdersLabel.resizeTextForBestFit = true;
@@ -176,6 +176,15 @@ namespace FLEETMOD
 								case EShipType.E_INTREPID_SC:
 									playerPawn.transform.position = new Vector3(9.4f, -400.9f, -13.8f);
 									break;
+
+								case EShipType.E_FLUFFY_DELIVERY:
+									playerPawn.transform.position = new Vector3(-7.9425f ,-398.4392f, -20.0314f);
+									break;
+
+								case EShipType.E_FLUFFY_TWO:
+									playerPawn.transform.position = new Vector3(18.3531f, -398.4898f, 3.6256f); // Added brig to fluffy ships
+									break;
+									
 							}
 
 							PLNetworkManager.Instance.LocalPlayer.GetPhotonPlayer().NickName = "locked";
@@ -217,9 +226,10 @@ namespace FLEETMOD
 						}
 						foreach (PLPlayer plplayer in PLServer.Instance.AllPlayers)
 						{
-							if (!MyVariables.survivalBonusDict.ContainsKey(plplayer.GetPlayerID()))
+							if (!MyVariables.survivalBonusDict.ContainsKey(plplayer.GetPlayerID()) && !plplayer.IsBot)
 							// if playerid doesn't exist in dictionary add playerid to dict and set hp bonus to 0
 							{
+								
 								MyVariables.survivalBonusDict.Add(plplayer.GetPlayerID(), 0);
 							}
 
