@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using PulsarModLoader.Chat.Commands;
 using PulsarModLoader.Chat.Commands.CommandRouter;
 using UnityEngine;
@@ -88,66 +87,7 @@ namespace FLEETMOD
                 }
                 return;
             }
-        }
-
-
-        public class Debug : ChatCommand
-        {
-            public override string[] CommandAliases()
-            {
-                return new string[]
-                {
-                    "debug"
-                };
-            }
-
-            public override string Description()
-            {
-                return "debug";
-            }
-
-            public string UsageExample()
-            {
-                return "/" + this.CommandAliases()[0];
-            }
-
-            public override void Execute(string arguments)
-            {
-                if (MyVariables.isrunningmod)
-                {
-                    PulsarModLoader.Utilities.Messaging.Echo(PLNetworkManager.Instance.LocalPlayer, "---------------------");
-                    foreach (KeyValuePair<int,int> pair in MyVariables.survivalBonusDict)
-                    {
-                        PulsarModLoader.Utilities.Messaging.Echo(PLNetworkManager.Instance.LocalPlayer, "Key: " + pair.Key + " Value: " + pair.Value);
-                    }
-                    PulsarModLoader.Utilities.Messaging.Echo(PLNetworkManager.Instance.LocalPlayer, "---------------------\n");
-                    PulsarModLoader.Utilities.Messaging.Echo(PLNetworkManager.Instance.LocalPlayer, "---------------------");
-                    foreach (PLPlayer player in PLServer.Instance.AllPlayers)
-                    {
-                        if (!player.IsBot)
-                        {
-                            PulsarModLoader.Utilities.Messaging.Echo(PLNetworkManager.Instance.LocalPlayer, "Player: " + player.GetPlayerName() + 
-                                " HP: " + player.GetPawn().Health + " MaxHealth: " + player.GetPawn().MaxHealth);
-                        }
-                    }
-                    PulsarModLoader.Utilities.Messaging.Echo(PLNetworkManager.Instance.LocalPlayer, "---------------------");
-                    if (PhotonNetwork.isMasterClient)
-                    {
-                        foreach(PLPlayer player in PLServer.Instance.AllPlayers)
-                        {
-                           player.StartingShip.MyStats.AddShipComponent(new PLCPU(ECPUClass.E_CLASS_TELEPORT_CAP, 1));
-                        }
-                       
-                    }
-                    
-                }
-                return;
-            }
-        }
-
-
-        /*
-
+        }/*
         public class FLEETMODShipLimit : ChatCommand
         {
             public override string[] CommandAliases()

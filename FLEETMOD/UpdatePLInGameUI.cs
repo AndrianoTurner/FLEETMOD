@@ -9,15 +9,10 @@ namespace FLEETMOD
 	[HarmonyPatch(typeof(PLInGameUI), "Update")]
 	internal class UpdatePLInGameUI
 	{
-		public static void Postfix(PLInGameUI __instance, ref List<PLPlayer> ___relevantPlayersForCrewStatus, ref PLCachedFormatString<string> ___cSkipWarpLabel, ref Text[] ___CrewStatusSlots_HPs, ref Text[] ___CrewStatusSlots_Names, ref Image[] ___CrewStatusSlots_BGs, ref Image[] ___CrewStatusSlots_Fills, ref Image[] ___CrewStatusSlots_TalkingImages, ref Image[] ___CrewStatusSlots_SlowFills, ref bool ___HealthValueLabel_CachedIsEmpty, ref bool ___O2ValueLabel_CachedIsEmpty)
+		public static void Postfix(PLInGameUI __instance, ref List<PLPlayer> ___relevantPlayersForCrewStatus, ref PLCachedFormatString<string> ___cSkipWarpLabel, ref Text[] ___CrewStatusSlots_HPs, ref Text[] ___CrewStatusSlots_Names, ref Image[] ___CrewStatusSlots_BGs, ref Image[] ___CrewStatusSlots_Fills, ref Image[] ___CrewStatusSlots_TalkingImages, ref Image[] ___CrewStatusSlots_SlowFills)
 		{
 			if (MyVariables.isrunningmod)
 			{
-				
-				___HealthValueLabel_CachedIsEmpty = true; // this fixes health/oxygen display issue on rejoin/restart
-				___O2ValueLabel_CachedIsEmpty = true;
-				
-
 				PLInGameUI.Instance.ControlsText.enabled = true;
 				if (PLServer.Instance != null && PLNetworkManager.Instance.LocalPlayer != null && PLServer.Instance.GameHasStarted && PLNetworkManager.Instance.LocalPlayer.GetHasStarted())
 				{
@@ -37,7 +32,6 @@ namespace FLEETMOD
 					{
 						___relevantPlayersForCrewStatus.Clear();
 					}
-					
 					PLGlobal.SafeGameObjectSetActive(__instance.CrewStatusRoot, !__instance.UIIsHidden && PLServer.Instance != null && !PLServer.Instance.PlayerShipIsDestroyed && PLEncounterManager.Instance.PlayerShip != null && PLXMLOptionsIO.Instance.CurrentOptions.GetStringValue("ShowCrewHealth") == "1");
 					if (__instance.CrewStatusRoot.activeSelf)
 					{

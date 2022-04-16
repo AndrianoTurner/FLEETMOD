@@ -28,32 +28,19 @@ namespace FLEETMOD
         // variable for storing localplayer's healthBonus
 
 
-       public static PLPlayer GetFleetPlayerFromClassID(int inClassID)
-       {
-            foreach (PLPlayer player in FleetmodPlayer)
-            {
-                if (player.GetClassID() == inClassID)
-                {
-                    return player;
-                }
-            }
-            return null;
-       }
-
         public static int GetShipCaptain (int inShipID)
         {
             foreach (KeyValuePair<PLShipInfo, int> pair in ShipCrews)
             {
                 PLPlayer Player = PLServer.Instance.GetPlayerFromPlayerID(pair.Value);
-                if (pair.Value != null && pair.Key == PLEncounterManager.Instance.GetShipFromID(inShipID) && Player.GetClassID() == 0 && Player.TeamID == 0)
+                if (pair.Key == PLEncounterManager.Instance.GetShipFromID(inShipID) && Player.GetClassID() == 0 && Player.TeamID == 0)
                 {
                         return pair.Value;
                 }
             }
             return -1;
         }
-       
-        public static List<PLPlayer> GetShipCrew (int inShipID)
+        public static List<int> GetShipCrew (int inShipID)
         {
             List<int> Crew = null;
             foreach (KeyValuePair<PLShipInfo, int> pair in ShipCrews)
