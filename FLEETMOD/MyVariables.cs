@@ -17,12 +17,12 @@ namespace FLEETMOD
         public static bool CargoMenu = false;
         public static Dictionary<PLShipInfo, int /*PlayerID*/> ShipCrews;
         // ShipID, PlayerID // List of crews in ship
-        //public static List<PLShipInfo> Fleet;
+        //public static List<PLShipInfoBase> Fleet;
         // ShipIDs of the ships in the Fleet
         //public static List<PhotonPlayer> FleetmodPhoton;
         //public static List<int /*PlayerID*/> FleetmodPlayer;
         // PlayerID of the Players who have Fleetmod active and running
-        public static Dictionary<int /*PlayerID*/ , /*Bonus*/ int> survivalBonusDict; 
+        public static Dictionary<int /*PlayerID*/ , /*Bonus*/ int> survivalBonusDict;
         // Dictionary that stores <playerID,healthBonus> on hostside, then it's being sent to clients
         public static int MySurvivalBonus;
         // variable for storing localplayer's healthBonus
@@ -30,19 +30,19 @@ namespace FLEETMOD
         // Dictionary that stores <playerID,shipID> on host side, to teleport unmodded crews to correct ship.
 
 
-        public static int GetShipCaptain (int inShipID)
+        public static int GetShipCaptain(int inShipID)
         {
             foreach (KeyValuePair<PLShipInfo, int> pair in ShipCrews)
             {
                 PLPlayer Player = PLServer.Instance.GetPlayerFromPlayerID(pair.Value);
                 if (pair.Key == PLEncounterManager.Instance.GetShipFromID(inShipID) && Player.GetClassID() == 0 && Player.TeamID == 0)
                 {
-                        return pair.Value;
+                    return pair.Value;
                 }
             }
             return -1;
         }
-        public static List<int> GetShipCrew (int inShipID)
+        public static List<int> GetShipCrew(int inShipID)
         {
             List<int> Crew = null;
             foreach (KeyValuePair<PLShipInfo, int> pair in ShipCrews)
@@ -55,7 +55,7 @@ namespace FLEETMOD
             }
             return Crew;
         }
-        public static bool ShipHasCaptain (int inShipID)
+        public static bool ShipHasCaptain(int inShipID)
         {
             if (PLServer.Instance != null && PLEncounterManager.Instance.GetShipFromID(inShipID) != null)
             {

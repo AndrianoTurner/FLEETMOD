@@ -135,7 +135,69 @@ namespace FLEETMOD
                 }
                 return;
             }
-        }/*
+        }
+
+        public class ListShipIds : ChatCommand
+        {
+            public override string[] CommandAliases()
+            {
+                return new string[]
+                {
+                    "listships"
+                };
+            }
+
+            public override string Description()
+            {
+                return "Lists ships in sector";
+            }
+
+            public string UsageExample()
+            {
+                return "/" + this.CommandAliases()[0];
+            }
+
+            public override void Execute(string arguments)
+            {
+                foreach (PLShipInfoBase shipInfoBase in PLEncounterManager.Instance.AllShips.Values)
+                {
+                    PulsarModLoader.Utilities.Messaging.ChatMessage(PhotonTargets.All, shipInfoBase.ShipName + " - " + shipInfoBase.ShipID);
+                }
+                return;
+            }
+        }
+
+        public class ListPlayerIds : ChatCommand
+        {
+            public override string[] CommandAliases()
+            {
+                return new string[]
+                {
+                    "listplayerids"
+                };
+            }
+
+            public override string Description()
+            {
+                return "Lists playerids";
+            }
+
+            public string UsageExample()
+            {
+                return "/" + this.CommandAliases()[0];
+            }
+
+            public override void Execute(string arguments)
+            {
+                foreach (PLPlayer player in PLServer.Instance.AllPlayers)
+                {
+                    PulsarModLoader.Utilities.Messaging.ChatMessage(PhotonTargets.All, player.GetPlayerName() + " - " + player.GetPlayerID());
+                }
+                return;
+            }
+        }
+
+        /*
         public class FLEETMODShipLimit : ChatCommand
         {
             public override string[] CommandAliases()
