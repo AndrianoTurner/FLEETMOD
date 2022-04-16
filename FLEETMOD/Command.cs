@@ -166,7 +166,6 @@ namespace FLEETMOD
                     }
                     else 
                     {
-                        PulsarModLoader.Utilities.Messaging.ChatMessage(PhotonTargets.All, "DBG ClassID: " + ClassID.ToString());
                         switch (args[1].ToLower().Substring(0, 1)) // ClassID is not an integer
                         {
                             case "c":
@@ -185,7 +184,6 @@ namespace FLEETMOD
                                 ClassID = 4;
                                 break;
                             default:
-                                ClassID = Player.GetClassID();
                                 break;
                         }
                     }
