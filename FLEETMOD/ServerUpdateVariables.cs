@@ -42,12 +42,13 @@ namespace FLEETMOD
             MyVariables.FleetmodPhoton = new List<PhotonPlayer>();*/
             MyVariables.ShipCrews = new Dictionary<PLShipInfo, int>();
             MyVariables.survivalBonusDict = new Dictionary<int, int>();
+            MyVariables.DialogGenerated = false;
             if (PhotonNetwork.isMasterClient)
             {
                 MyVariables.UnModdedCrews = new Dictionary<int, int>();
                 foreach (PulsarMod pulsarMod in ModManager.Instance.GetAllMods())
                 {
-                    if (pulsarMod.HarmonyIdentifier() == "mod.id107.beammeup" || pulsarMod.Name == "Exotic Components")
+                    if (pulsarMod.HarmonyIdentifier() == "mod.id107.beammeup")
                     {
                         PulsarModLoader.Utilities.Logger.Info("Fleetmod has disabled " + pulsarMod.Name + " due to mod conflicts.");
                         pulsarMod.Unload();
